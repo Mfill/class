@@ -1,0 +1,17 @@
+class Database{
+	public $where;
+	public function where($wh, $condition = 'AND'){
+		foreach($wh as $key => $value){
+			if($this->where == ''){
+			$this->where .= $key.':'.$key;
+			}
+			else{
+				$this->where .= ' '.$condition.' '.$key.':'.$key;
+			}
+		}
+		return $this;
+	}
+	public function get(){
+		var_dump($this->where);
+	}
+}
