@@ -32,11 +32,12 @@ class Database{
 	}
 	public function where($wh, $condition = 'AND'){
 		foreach($wh as $key => $value){
+			$this->bind[$key] = $value;
 			if($this->where == ''){
-			$this->where .= $key.':'.$key;
+			$this->where .= $key.'=:'.$key;
 			}
 			else{
-				$this->where .= ' '.$condition.' '.$key.':'.$key;
+				$this->where .= ' '.$condition.' '.$key.'=:'.$key;
 			}
 		}
 		return $this;
